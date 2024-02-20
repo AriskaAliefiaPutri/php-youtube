@@ -6,6 +6,11 @@
 
     require_once "../function.php";
 
+    if (isset($_GET['update'])) {
+        $id=$_GET['update'];
+        require_once "update.php";
+    }
+
 
     if (isset($_GET['hapus'])) {
         $id=$_GET['hapus'];
@@ -60,6 +65,7 @@
         <th>No</th>
         <th>Kategori</th>
         <th>Hapus</th>
+        <th>Update</th>
     </tr>
     
     ';
@@ -70,6 +76,7 @@
             echo '<td>'.$no++.'</td>';
             echo '<td>'.$row['kategori'].'</td>';
             echo '<td><a href="?hapus='.$row['idkategori'].'">'.'Hapus'.'</td>';
+            echo '<td><a href="?hupdate='.$row['idkategori'].'">'.'Update'.'</td>';
             echo '</tr>';
         }
     }
