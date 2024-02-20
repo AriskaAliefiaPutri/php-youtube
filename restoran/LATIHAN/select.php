@@ -27,7 +27,7 @@
     
 
 
-    $mulai = 3;
+    
     $banyak = 3;
 
     $halaman = ceil($jumlahdata / $banyak);
