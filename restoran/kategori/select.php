@@ -1,8 +1,18 @@
 <div style="margin:auto; width:900px;">
 
+<h3><a href="http://localhost/php-youtube/restoran/kategori/insert.php">TAMBAH DATA</a></h3>
+
 <?php 
 
     require_once "../function.php";
+
+
+    if (isset($_GET['hapus'])) {
+        $id=$_GET['hapus'];
+        require_once "delete.php";
+    }
+
+    echo '<br>';
 
     $sql = "SELECT idkategori FROM tblkategori";
     $result = mysqli_query($koneksi, $sql);
@@ -22,7 +32,7 @@
         echo '&nbsp &nbsp &nbsp';
     }
 
-    echo '<br>' '<br>';
+    echo '<br>';
 
     if (isset($_GET['p'])) {
         $p=$_GET['p'];
@@ -49,6 +59,7 @@
     <tr>
         <th>No</th>
         <th>Kategori</th>
+        <th>Hapus</th>
     </tr>
     
     ';
@@ -58,6 +69,7 @@
             echo '<tr>'
             echo '<td>'.$no++.'</td>';
             echo '<td>'.$row['kategori'].'</td>';
+            echo '<td><a href="?hapus='.$row['idkategori'].'">'.'Hapus'.'</td>';
             echo '</tr>';
         }
     }
