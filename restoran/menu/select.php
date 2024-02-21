@@ -40,7 +40,7 @@
 </div>
 
 <?php 
-    $jumlahdata = $db->rowCOUNT("SELECT idkmenu FROM tblmenu");
+    $jumlahdata = $db->rowCOUNT("SELECT idkmenu FROM tblmenu $where");
     $banyak = 3;
 
     $halaman = ceil($jumlahdata / $banyak);
@@ -59,11 +59,13 @@
     $no=1+$mulai;
 ?>
 
-<table class="table table-bordered w-50">
+<table class="table table-bordered w-80">
     <thead>
         <tr>
             <th>No</th>
             <th>Menu</th>
+            <th>Harga</th>
+            <th>Gambar</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
@@ -74,6 +76,8 @@
             <tr>
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $r['menu']?></td>
+                <td><?php echo $r['harga']?></td>
+                <td><img style="width:100px" src="../upload/<?php echo $r['gambar']?>" alt=""></td>
                 <td><a href="?f=menu&m=deleted&id"><?php echo $r['idmenu']?>Delete</a></td>
                 <td><a href="?f=menu&m=update&id"><?php echo $r['idmenu']?>Update</a></td>
             </tr>
@@ -88,3 +92,4 @@
         echo '&nbsp &nbsp &nbsp';
     }
 ?>
+
