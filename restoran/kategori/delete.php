@@ -1,12 +1,14 @@
 <?php 
 
-    require_once "../function.php";
+    if (isset($_GET['id'])) {
+        $id=$_GET['id'];
 
-    
-    $sql = "DELETE FROM tblkategori WHERE idkategori = 1";
+        $sql = "SELECT * FROM tblkategori WHERE idkategori=$id";
 
-    $result = mysqli_query($koneksi, $sql);
+        echo $sql;
 
-    heade("location:http://localhost/php-youtube/restoran/kategori/select.php");
+        header("location:?f=kategori&m=select");
+    }
+
 
 ?>
