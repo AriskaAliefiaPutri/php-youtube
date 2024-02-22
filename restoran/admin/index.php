@@ -33,8 +33,8 @@
 
             <div class="col-md-9">
                 <div class="float-right mt-4"><a href="?log=logout"> logout</div>
-                <div class="float-right mt-4 mr-4">logout</div>
-            </div>
+                <div class="float-right mt-4 mr-4"> User : <a href="?f=user&m=updateusere&id<?php echo $_SESSION['iduser'] ?>"> <?php echo $_SESSION ?> </a> </div>
+                
         </div>
 
         <div class="row mt-5">
