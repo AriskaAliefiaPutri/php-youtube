@@ -18,7 +18,7 @@
     $no=1+$mulai;
 ?>
 <div class="float-left mr-4">
-    <a href="btn btn-primary" href="?f=kategori&m=insert" role="button">TAMBAH DATA</a>
+    <a class="btn btn-primary" href="?f=kategori&m=insert" role="button">TAMBAH DATA</a>
 </div>
 <h3>Kategori</h3>
 <table class="table table-bordered w-50">
