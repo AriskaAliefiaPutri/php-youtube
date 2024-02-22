@@ -51,7 +51,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $r['menu']?></h5>
                     <p class="card-text"><?php echo $r['harga']?></p>
-                    <a class="btn btn-primary" href="?f=kategori&m=insert" role="button">BELI</a>
+                    <a class="btn btn-primary" href="?f=home&m=beli&id=<?php echo $r['idmenu']?>" role="button">BELI</a>
                 </div>
             </div>
 
