@@ -23,15 +23,32 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 mt-4">
                 <h2><a href="index.php">Restoran SMK</a> </h2>
             </div>
 
             <div class="col-md-9">
-                <div class="float-right mt-4">Logout</div>
-                <div class="float-right mt-4">Login</div>
-                <div class="float-right mt-4 mr-4"> Pelanggan </a></div>
-                <div class="float-right mt-4 mr-4"> Daftar </a></div>
+
+                <?php 
+
+                    if (isset($_SESSION['pelanggan'])) {
+                        echo '
+                            <div class="float-right mt-4">Logout</div>
+                            <div class="float-right mt-4 mr-4">Pelanggan</div>
+                        ';
+                    }else {
+                        echo '
+                            <div class="float-right mt-4 mr-4">Login</div>
+                            <div class="float-right mt-4 mr-4"><a href="?f=home&m=daftar>Daftar</a></div>
+                        ';
+                    }
+
+                ?>
+
+                
+                
+                
+                
                 
         </div>
 
