@@ -1,7 +1,17 @@
 <?php 
 
+    session_start();
     require_once"../dbcontroller.php";
     $db = new DB;
+
+    if (!isset($_SESSION['user'])) {
+        header("location:login.php");
+    }
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header("locatio:index.php");
+    }
 
 ?>
 
@@ -22,7 +32,8 @@
             </div>
 
             <div class="col-md-9">
-                <div class="float-right mt-4">logout</div>
+                <div class="float-right mt-4"><a href="?log=logout"> logout</div>
+                <div class="float-right mt-4 mr-4">logout</div>
             </div>
         </div>
 
