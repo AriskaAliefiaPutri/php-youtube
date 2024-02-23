@@ -54,6 +54,9 @@
 
         $total = 0;
 
+        global $total;
+
+
         echo '
         
         <table class="table table-bordered w-70">
@@ -101,6 +104,10 @@
 
     }
 
+    
+
 
 
 ?>
+
+<a class="btn btn-primary" href="?f=home&m=checkoutb&total=<?php echo $total?>" role="button">CHECKOUT</a>
