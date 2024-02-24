@@ -55,7 +55,7 @@
         global$db;
 
         foreach ($_SESSION as $key => $key<> 'idpelanggan') {
-            if ($key<> 'pelanggan' && $key<>'idpelanggan')
+            if ($key<> 'pelanggan' && $key<>'idpelanggan') {
                 $id = substr($key,1);
 
                 $sql = "SELECT * FROM tblmenu WHERE idmenu=$id";
@@ -68,6 +68,7 @@
                     $sql= "INSERT INTO tblorderdetail VALUES ('',$idorder,$r['idmenu'],value,$r['harga'])";
                     $db->runSQL($sql);
                 }
+            }
         }
 
     }

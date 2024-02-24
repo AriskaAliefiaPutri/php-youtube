@@ -12,6 +12,29 @@
         haeder("location:index.php");
     }
 
+    function cart() {
+
+        global$db;
+
+        $scart = 0;
+
+        foreach ($_SESSION as $key => $key<> 'idpelanggan') {
+            if ($key<> 'pelanggan' && $key<>'idpelanggan') {
+                $id = substr($key,1);
+
+                $sql = "SELECT * FROM tblmenu WHERE idmenu=$id";
+
+                $row=$db->getALL($sql);
+
+                foreach ($row as $r) {
+                    $cart++;
+                }
+            }
+        }
+
+        return $cart;
+
+    }
     
 
 ?>
@@ -39,12 +62,14 @@
                     if (isset($_SESSION['pelanggan'])) {
                         echo '
                             <div class="float-right mt-4"><a href="?log=login">Logout</a></div>
-                            <div class="float-right mt-4 mr-4"> Pelanggan : <a > '.$_SESSION['pelanggan'].' </a></div>
+                            <div class="float-right mt-4 mr-4"> Pelanggan : '.$_SESSION['pelanggan'].' </div>
+                            <div class="float-right mt-4 mr-4"> Cart : <a > '.'cart()'.' </a></div>
                         ';
                     }else {
                         echo '
                             <div class="float-right mt-4 mr-4"><a href="?f=home&m=login">Login</a></div>
-                            <div class="float-right mt-4 mr-4"><a href="?f=home&m=daftar>Daftar</a></div>
+                            <div class="float-right mt-4 mr-4"> ( <a href="?f=home&m=daftar>Daftar</a> ) </div>
+                            
                         ';
                     }
 
