@@ -69,6 +69,7 @@
                         echo '
                             <div class="float-right mt-4 mr-4"><a href="?f=home&m=login">Login</a></div>
                             <div class="float-right mt-4 mr-4"> ( <a href="?f=home&m=daftar>Daftar</a> ) </div>
+                            <div class="float-right mt-4 mr-4"> <a href="?f=home&m=histori"> Histori </a></div>
                             
                         ';
                     }
