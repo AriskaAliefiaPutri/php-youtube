@@ -106,8 +106,17 @@
 
     
 
+?>
 
+<?php 
 
+    if (!empty($total)) {
+     
+    
 ?>
 
 <a class="btn btn-primary" href="?f=home&m=checkoutb&total=<?php echo $total?>" role="button">CHECKOUT</a>
+
+<?php 
+    }
+?>

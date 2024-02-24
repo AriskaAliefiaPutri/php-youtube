@@ -14,16 +14,14 @@
             insertidOrder(idorder,$idpelanggan,$tgl,$total);
             insertOrderDetail($idorder);
         }else {
-            insertOrderdetail($iddetail);
+            insertOrderDetail($idorder);
         }
         
+        kosongkanSession();
+        header("location:?f=home&m=checkout");
 
-        
-
-        insertOrderDetail($idorder);
-
-
-
+    }else {
+        info();
     }
 
 
@@ -54,23 +52,42 @@
 
     function insertOrderDetail($idorder=1) {
 
+        global$db;
+
         foreach ($_SESSION as $key => $key<> 'idpelanggan') {
-            $id = substr($key,1);
+            if ($key<> 'pelanggan' && $key<>'idpelanggan')
+                $id = substr($key,1);
 
-            $sql = "SELECT * FROM tblmenu WHERE idmenu=$id";
+                $sql = "SELECT * FROM tblmenu WHERE idmenu=$id";
 
-            $row=$db->getALL($sql);
+                $row=$db->getALL($sql);
 
-            foreach ($row as $r) {
-                $idmenu=$r['idmenu'];
-                $harga =$r['harga'];
-                $sql= "INSERT INTO tblorderdetail VALUES ('',$idorder,$r['idmenu'],value,$r['harga'])";
-                $db->runSQL($sql);
-            }
-
-            
+                foreach ($row as $r) {
+                    $idmenu=$r['idmenu'];
+                    $harga =$r['harga'];
+                    $sql= "INSERT INTO tblorderdetail VALUES ('',$idorder,$r['idmenu'],value,$r['harga'])";
+                    $db->runSQL($sql);
+                }
         }
 
+    }
+
+    function kosongkanSession(){
+
+        foreach ($_SESSION as $key => $key<> 'idpelanggan') {
+            if ($key<> 'pelanggan' && $key<>'idpelanggan') {
+                $id = substr($key,1);
+
+                unset($_SESSION['_'.$id]);
+            }
+                 
+        }
+    }
+
+    function info() {
+
+        echo "<h3> Terimakasih sudah berbelanja </h3>";
+        
     }
 
 ?>
