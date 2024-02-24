@@ -2,12 +2,12 @@
 
 <div class="from-group">
     <form action="" method="post">
-        <div class="from-group w-50">
+        <div class="from-group w-50 float-left">
             <label for="">Tanggal Awal</label>
             <input type="text" name="tawal" required class="from-control">
         </div>
 
-        <div class="from-group w-50">
+        <div class="from-group w-50 float-left">
             <label for="">Tanggal Akhir</label>
             <input type="text" name="takhir" required class="from-control">
         </div>
@@ -25,7 +25,7 @@
     
     
     $jumlahdata = $db->rowCOUNT("SELECT ididorderdetail FROM idvorderdetail ");
-    $banyak = 4;
+    $banyak = 3;
 
     $halaman = ceil($jumlahdata / $banyak);
 
