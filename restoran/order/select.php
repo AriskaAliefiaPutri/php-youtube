@@ -1,1 +1,64 @@
-<h1> select order</h1>
+<?php 
+    $email =$_SESSION['pelanggan'];
+    $jumlahdata = $db->rowCOUNT("SELECT idorder FROM vorder ");
+    $banyak = 2;
+
+    $halaman = ceil($jumlahdata / $banyak);
+
+    if (isset($_GET['p'])) {
+        $p=$_GET['p'];
+        $mulai = ($p * $banyak) - $banyak
+        
+    }else{
+        $mulai =0;
+    }
+
+    $sql = "SELECT * FROM vorder ORDER BY status ASC LIMIT $mulai, $banyak";
+    $row = $db->getALL($sql);
+
+    $no=1+$mulai;
+?>
+
+<h3>Order Pembelian</h3>
+<table class="table table-bordered w-50">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Planggan</th>
+            <th>Tanggal</th>
+            <th>Total</th>
+            <th>Bayar</th>
+            
+           
+        </tr>
+    </thead>
+    <tbody>
+        <?php if(!emoty($row)) { ?>
+        <?php foreach($row as $r): ?>
+            <?php 
+                if ($r['status']==0) {
+                    $status='<td><a href="order?f=home&m=bayar&id='.$r['idorder'].'" >Detail</a></td>';
+                }else {
+                    $status = '<td>LUNAS</td>';
+                }
+
+            ?>
+            <tr>
+                <td><?php echo $no++ ?></td>
+                <td><?php echo $r['pelanggan']?></td>
+                <td><?php echo $r['tglorder']?></td>
+                <td><?php echo $r['total']?></td>
+                <td><?php echo $r['idorder']?></td>
+                <?php echo $status; ?>
+            </tr>
+        <?php endforeach ?>
+        <?php } ?>
+    </tbody>
+</table>
+
+<?php 
+    for ($i=1; $i <= $halaman ; $i++) {
+        echo '<a href="?f=home&m=select&p'.$i.'">'.$i.'</a>';
+        echo '&nbsp &nbsp &nbsp';
+    }
+?>
